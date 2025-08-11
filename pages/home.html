@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Home</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fce4ec; /* light pink */
+      display: flex;
+      justify-content: center; /* center horizontally */
+      align-items: center;     /* center vertically */
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      background-color: #fff;
+      padding: 60px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      max-width: 400px;
+      width: 100%;
+    }
+    h1 {
+      color: #800040;
+      margin-bottom: 15px;
+      font-size: 2em;
+    }
+    p {
+      margin-bottom: 30px;
+      color: #555;
+      font-size: 1.1em;
+    }
+    button {
+      margin-top: 15px;
+      width: 100%;
+      padding: 14px;
+      font-size: 1.1em;
+      background-color: #800040;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    button:hover {
+      background-color: #a00050;
+    }
+    a {
+      text-decoration: none;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Welcome to KGT Portal!</h1>
+    <p>Please choose your role:</p>
+    <a href="/student"><button>Student</button></a>
+    <a href="/admin"><button>Admin</button></a>
+  </div>
+</body>
+</html>
