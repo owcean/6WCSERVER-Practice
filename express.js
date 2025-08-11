@@ -1,15 +1,19 @@
 import express from 'express';
 import path from 'path';
+import bodyParser from 'body-parser';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+const urlencodedParser = bodyParser.urlencoded({ extended: false });
+const jsonParser = bodyParser.json();
+
 const app = express();
 
 app.use(express.static('public'));
 
-//  PAGE ROUTES 
+// PAGE ROUTES 
 
 // Home 
 app.get('/', (req, res) => {
@@ -26,7 +30,7 @@ app.get('/admin', (req, res) => {
   res.sendFile(path.join(__dirname, 'pages', 'admin.html'));
 });
 
-//  API ROUTES 
+// API ROUTES 
 
 // Get student 
 app.get('/getStudent', (req, res) => {
@@ -37,19 +41,27 @@ app.get('/getStudent', (req, res) => {
     section: req.query.section,
   };
   console.log("Student: ", response);
-  res.end(`Received Student Data: ${JSON.stringify(response)}`);
+  res.json({
+    status: "success",
+    message: "Received Student Data",
+    data: response
+  });
 });
 
-// Get admin 
-app.get('/getAdmin', (req, res) => {
+// Get admin (POST)
+app.post('/postAdmin', urlencodedParser, (req, res) => {
   const response = {
-    adminId: req.query.adminid,
-    firstName: req.query.firstName,
-    lastName: req.query.lastName,
-    department: req.query.department,
+    adminId: req.body.adminid,
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    department: req.body.department,
   };
   console.log("Admin: ", response);
-  res.end(`Received Admin Data: ${JSON.stringify(response)}`);
+  res.json({
+    status: "success",
+    message: "Received Admin Data",
+    data: response
+  });
 });
 
 app.get('/info', (req, res) => {
